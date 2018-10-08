@@ -65,8 +65,13 @@ public class GamePanel extends JPanel implements Runnable{
     public void impackCheck(){
         for (int k=0; k<drawables.size(); k++){
             Drawable drawable = drawables.get(k);
-            if (drawable.getX() > getWidth()-200 || drawable.getX() < 50
-                     || drawable.getY() > getHeight()-100 || drawable.getY() < 50){
+            int width = this.getWidth();
+            int height= this.getHeight();
+
+            if (drawable.getX() > 1024 - 100 || drawable.getX() <50
+                     || drawable.getY() >768-50|| drawable.getY() < 50){
+                System.out.println(width + " " + this.getHeight());
+
                 ((Impackable)drawable).isImpacked();
                    System.out.println(drawable.getX() + ","+drawable.getY() + " " + drawable.getX() + " " +drawable.getY());
 
@@ -76,7 +81,6 @@ public class GamePanel extends JPanel implements Runnable{
            for (int j=i+1; j<drawables.size(); j++){
                Drawable d1 = drawables.get(i);
                Drawable d2 = drawables.get(j);
-
                if (d1.getX() - d2.getX() < d2.getWidth()
                        && d2.getX() - d1.getX() < d1.getWidth()
                        && d1.getY() - d2.getY() < d2.getHeight()
@@ -99,7 +103,6 @@ public class GamePanel extends JPanel implements Runnable{
             t1 = System.nanoTime();
             impackCheck();
             missleLogic();
-
             player1Control();
             t2 = System.nanoTime();
             dt = (t2 - t1) / 1000000L;

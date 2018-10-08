@@ -65,7 +65,6 @@ public class Tank extends Drawable implements Impackable{
 	@Override
 	public void isImpacked(){
 		isImpacked = true;
-		System.out.println("impacked");
 	}
 	public Tank(int x,int y,int width,int height,int direction,int speed,int missleSpeed){
 		super(x,y,width,height);
